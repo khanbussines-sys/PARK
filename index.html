@@ -3,157 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Park Hub - Roblox Maps & Assets</title>
+    <title>PARK HUB - Roblox Maps Center</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            background-color: #0f172a;
-            color: #f8fafc;
-            line-height: 1.6;
+            background-color: #0c0c0e;
+            color: #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        header {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            padding: 2rem 1rem;
-            text-align: center;
-            border-bottom: 2px solid #3b82f6;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            color: #3b82f6;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            color: #94a3b8;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .artikel-card {
-            background-color: #1e293b;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-            margin-bottom: 2rem;
-        }
-
-        .meta-data {
-            font-size: 0.85rem;
-            color: #3b82f6;
-            margin-bottom: 1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .artikel-card h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: #ffffff;
-        }
-
-        .artikel-card p {
-            color: #cbd5e1;
-            margin-bottom: 1.5rem;
-        }
-
-        .download-box {
-            background: #0f172a;
-            border: 1px solid #334155;
-            padding: 1.5rem;
-            border-radius: 8px;
+        /* Navigasi Atas */
+        nav {
+            background-color: #141417;
+            border-bottom: 3px solid #ff003c;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            box-shadow: 0 4px 20px rgba(255, 0, 60, 0.15);
         }
 
-        .file-info h3 {
-            font-size: 1.1rem;
-            color: #f1f5f9;
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .file-info p {
+        nav .logo span {
+            color: #ff003c;
+            text-shadow: 0 0 10px rgba(255, 0, 60, 0.6);
+        }
+
+        nav .nav-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        nav .nav-links a:hover {
+            color: #ff003c;
+        }
+
+        /* Tata Letak Utama */
+        .main-layout {
+            max-width: 1300px;
+            width: 100%;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 2rem;
+            flex: 1;
+        }
+
+        @media (max-width: 900px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Area Konten Utama / Daftar Map */
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            border-left: 5px solid #ff003c;
+            padding-left: 10px;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        /* Grid Kartu Map */
+        .map-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .map-card {
+            background-color: #141417;
+            border: 1px solid #232329;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .map-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff003c;
+            box-shadow: 0 5px 15px rgba(255, 0, 60, 0.1);
+        }
+
+        .map-thumbnail {
+            width: 100%;
+            height: 160px;
+            background-color: #1a1a1e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a5568;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border-bottom: 2px solid #232329;
+        }
+
+        .map-info {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .map-tags {
+            font-size: 0.75rem;
+            color: #ff003c;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .map-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .map-desc {
             font-size: 0.85rem;
-            color: #64748b;
-            margin-bottom: 0;
+            color: #a0aec0;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .btn-action-container {
+            margin-top: auto;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-download, .btn-upload-nav {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: background 0.2s;
+            cursor: pointer;
+            border: none;
         }
 
         .btn-download {
-            background-color: #2563eb;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.2s ease;
+            background-color: #ff003c;
+            color: #fff;
+            flex: 1;
         }
 
         .btn-download:hover {
-            background-color: #1d4ed8;
+            background-color: #cc0030;
+        }
+
+        /* Sidebar Kanan */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .widget {
+            background-color: #141417;
+            border: 1px solid #232329;
+            border-radius: 8px;
+            padding: 1.2rem;
+        }
+
+        .widget-title {
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: #fff;
+            border-bottom: 2px solid #ff003c;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        /* Formulir Unggah File di Sidebar */
+        .upload-widget-btn {
+            background-color: #1a1a1e;
+            color: #e2e8f0;
+            border: 1px dashed #ff003c;
+            width: 100%;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 6px;
+            text-decoration: none;
+            display: block;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .upload-widget-btn:hover {
+            background-color: rgba(255, 0, 60, 0.05);
         }
 
         footer {
+            background-color: #0a0a0c;
             text-align: center;
-            padding: 2rem;
-            color: #64748b;
-            font-size: 0.9rem;
+            padding: 1.5rem;
+            color: #4a5568;
+            font-size: 0.85rem;
+            border-top: 1px solid #141417;
+            margin-top: auto;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>PARK HUB</h1>
-        <p>Pusat Dokumentasi Map dan Aset Roblox Keren</p>
-    </header>
+    <!-- Navigasi Utama -->
+    <nav>
+        <div class="logo">PARK<span>POI</span></div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">All Maps</a>
+            <a href="#">Scripts</a>
+        </div>
+    </nav>
 
-    <div class="container">
-        <!-- Struktur Artikel -->
-        <article class="artikel-card">
-            <div class="meta-data">Update Terbaru • Showcase Map</div>
-            <h2>Rilis Showcase Map Roblox: Wall 2048</h2>
-            <p>
-                Selamat datang di halaman dokumentasi resmi proyek map terbaru saya. Map ini dirancang khusus dengan optimasi tinggi agar ringan dimainkan di perangkat seluler maupun PC berspesifikasi rendah. 
-            </p>
-            <p>
-                Di dalam file ini, Anda akan menemukan struktur pencahayaan masa depan (Future Lighting) yang sudah disesuaikan, susunan partisi dinding yang rapi, serta beberapa contoh skrip interaksi dasar yang siap pakai. Silakan unduh file proyek penuhnya secara gratis di bawah ini untuk dipelajari atau dimodifikasi lebih lanjut.
-            </p>
-
-            <!-- Box Tombol Unduh Berfungsi Interaktif -->
-            <div class="download-box">
-                <div class="file-info">
-                    <h3>wall 2048.rbxl</h3>
-                    <p>Format: Roblox Place File • Ukuran: ~60 KB</p>
+    <!-- Tata Letak Utama -->
+    <div class="main-layout">
+        
+        <!-- Kolom Kiri: Daftar File Unduhan -->
+        <main class="content-area">
+            <h2 class="section-title">Update Map Terbaru</h2>
+            
+            <div class="map-grid">
+                
+                <!-- Kartu Proyek Map 1 -->
+                <div class="map-card">
+                    <!-- Nanti tulisan ini bisa diganti dengan tag gambar <img src="link_foto.jpg"> -->
+                    <div class="map-thumbnail">PREVIEW MAP WALL 2048</div>
+                    <div class="map-info">
+                        <div class="map-tags">Showcase • Objek Padat</div>
+                        <a href="#" class="map-title">Wall 2048 Showcase</a>
+                        <p class="map-desc">Map showcase masa depan dengan optimasi pencahayaan tinggi yang sangat ringan dijalankan di perangkat mobile maupun PC kentang.</p>
+                        <div class="btn-action-container">
+                            <!-- Masukkan tautan link unduhan file Anda dari Notion/Drive di bawah ini -->
+                            <a href="TEMPEL_LINK_NOTION_ATAU_DRIVE_DISINI" class="btn-download" target="_blank">📥 Download File</a>
+                        </div>
+                    </div>
                 </div>
-                <!-- Hubungkan dengan link download Notion/Drive Anda di bawah ini -->
-                <a href="TEMPEL_LINK_NOTION_ATAU_DRIVE_DISINI" class="btn-download" target="_blank">📥 Unduh Map</a>
+
+                <!-- Kartu Proyek Map 2 (Contoh Kosong untuk Map Selanjutnya) -->
+                <div class="map-card">
+                    <div class="map-thumbnail">BELUM ADA PREVIEW</div>
+                    <div class="map-info">
+                        <div class="map-tags">Coming Soon</div>
+                        <a href="#" class="map-title">Proyek Map Baru Anda</a>
+                        <p class="map-desc">Ini adalah contoh wadah jika nanti Anda mengunggah berkas map Roblox baru lagi ke dalam website ini.</p>
+                        <div class="btn-action-container">
+                            <a href="#" class="btn-download">📥 Download File</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </article>
+        </main>
+
+        <!-- Kolom Kanan: Sidebar untuk Interaksi & Unggah -->
+        <aside class="sidebar">
+            
+            <!-- Widget Kirim/Upload File -->
+            <div class="widget">
+                <div class="widget-title">Punya Map Keren?</div>
+                <p style="font-size: 0.85rem; color: #a0aec0; margin-bottom: 1rem;">Bagikan hasil karya map Roblox buatanmu sendiri di sini agar bisa diunduh oleh admin dan teman-teman lainnya.</p>
+                <!-- Tempel link Google Form pengunggah file Anda di bawah ini -->
+                <a href="TEMPEL_LINK_GOOGLE_FORM_DISINI" class="upload-widget-btn" target="_blank">🚀 Kirim Map Kamu</a>
+            </div>
+
+            <!-- Widget Informasi / Sosial Media -->
+            <div class="widget">
+                <div class="widget-title">Informasi Situs</div>
+                <p style="font-size: 0.85rem; color: #a0aec0; line-height: 1.6;">Selamat datang di PARKPOI. Wadah pengarsipan berkas proyek berksturktur biner (`.rbxl`) untuk engine Roblox Studio secara terbuka.</p>
+            </div>
+
+        </aside>
     </div>
 
     <footer>
-        <p>&copy; 2026 khanbussines-sys. Dibuat dengan GitHub Pages.</p>
+        <p>&copy; 2026 PARKPOI Hub - GitHub Pages Platform.</p>
     </footer>
 
-    <!-- Tombol WhatsApp Melayang -->
-<a href="https://wa.me" 
-   style="position:fixed; bottom:20px; right:20px; background-color:#25d366; color:white; padding:15px 20px; border-radius:50px; text-decoration:none; font-weight:bold; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index:1000; display:flex; align-items:center; gap:8px;" 
-   target="_blank">
-   💬 Chat Admin via WA
-</a>
-    
+    <!-- WIDGET LIVE CHAT (TAWK.TO ATAU WHATSAPP) BISA DITEMPEL DI SINI SEBELUM TUTUP BODY -->
+
 </body>
 </html>
